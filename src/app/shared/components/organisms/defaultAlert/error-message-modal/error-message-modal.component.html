@@ -1,0 +1,24 @@
+<div class="modal-simple">
+  <div class="step-completed-confetti"></div>
+  <div class="modal-header">
+    <div class="title">{{ parent.titleText }}</div>
+    <div class="cursor-pointer close" (click)="modal.close(true)">
+      <app-svg class="x-button" src="assets/images/modals/close_other_svg.svg"></app-svg>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="content">
+      <div [ngClass]="isError ? ' alert alert-danger' : 'alert alert-success'">
+        <div class="flex flex-center-all">
+          <span class="glyphicon glyphicon-alert symbol"></span>
+          <div class="text">
+            <span style="font-size: 14px"> {{ parent.bodyText }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <app-custom-button text="Close" color="primary" (click)="modal.close(true)"></app-custom-button>
+  </div>
+</div>

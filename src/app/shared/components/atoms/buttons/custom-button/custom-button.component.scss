@@ -1,0 +1,206 @@
+:host {
+  box-shadow: none !important;
+  display: inline-block;
+  height: var(--button-normal-height);
+}
+
+:host.cog-icon {
+  height: var(--button-normal-height);
+  width: var(--button-normal-height);
+
+  >button {
+    padding: 6px 9px;
+  }
+}
+
+.glyphicon-cog {
+  top: 1.4px;
+}
+
+button {
+  -moz-user-select: none;
+  -ms-touch-action: manipulation;
+  -ms-user-select: none;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  background-image: none;
+  border-radius: var(--default-border-radius);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  height: var(--button-normal-height);
+  line-height: 1.4286;
+  margin-bottom: 0;
+  outline: 1px solid transparent;
+  padding: 6px 12px;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  >span {
+    font-size: 14px;
+  }
+}
+
+/* Primary Cogsig */
+.mt-button-primary,
+.mt-button-primary:focus {
+  background-color: var(--blau);
+  border: none;
+  box-shadow: none;
+  color: var(--weis);
+}
+
+.mt-button-primary:hover {
+  color: var(--weis);
+  background-color: var(--blau_hover);
+}
+
+.mt-button-primary:disabled {
+  background-color: var(--blau_disabled);
+  cursor: default;
+}
+
+/* Legacy Primary MT */
+.mt-button-legacy_primary,
+.mt-button-legacy_primary:focus {
+  background-color: var(--mt-blau);
+  border: none;
+  box-shadow: none;
+  color: var(--weis);
+}
+
+.mt-button-legacy_primary:hover {
+  color: var(--weis);
+  background-color: var(--mt-blau_hover);
+}
+
+.mt-button-legacy_primary:disabled {
+  background-color: var(--mt-blau_disabled);
+  cursor: default;
+}
+
+/* Secondary */
+/* REMARK: duplicate of mt-button-default, use that one instead */
+.mt-button-secondary,
+.mt-button-secondary:focus {
+  background-color: var(--default-btn);
+  border: none;
+  box-shadow: none;
+  color: var(--hellschwarz);
+}
+
+.mt-button-secondary:hover {
+  background-color: var(--default-btn-hover);
+}
+
+/* Success */
+.mt-button-success,
+.mt-button-success:focus {
+  background-color: var(--gruen);
+  border: none;
+  box-shadow: none;
+  color: var(--hellschwarz);
+}
+
+.mt-button-success:hover {
+  color: var(--hellschwarz);
+  background-color: var(--gruen_hover);
+}
+
+/* Danger */
+.mt-button-danger,
+.mt-button-danger:focus {
+  background-color: var(--coral);
+  border: none;
+  box-shadow: none;
+  color: var(--weis);
+}
+
+.mt-button-danger:hover {
+  color: var(--weis);
+  background-color: var(--rot_hover);
+}
+
+.mt-button-danger.alert:hover {
+  cursor: default !important;
+}
+
+/* Default */
+.mt-button-default,
+.mt-button-default:focus {
+  background-color: var(--default-btn);
+  border: none;
+  box-shadow: none;
+  color: var(--hellschwarz);
+}
+
+.mt-button-default:hover {
+  background-color: var(--default-btn-hover);
+}
+
+.mt-button-default:disabled {
+  background-color: var(--default-btn-disabled);
+}
+
+/* Green */
+.mt-button-green {
+  color: var(--weis);
+  background-color: var(--gruen);
+  border: none;
+  box-shadow: none;
+}
+
+.mt-button-green:hover {
+  color: var(--weis);
+  background-color: var(--gruen_hover);
+}
+
+/* White */
+.mt-button-white {
+  background-color: var(--weis);
+  border: none;
+  box-shadow: none;
+  color: var(--mine_schacht);
+  font-weight: 500;
+}
+
+.mt-button-white:hover {
+  background-color: var(--weis);
+  border-color: transparent;
+}
+
+/* Transparent Green */
+.mt-button-trans_gruen {
+  color: var(--gruen);
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* Transparent Rot */
+.mt-button-trans_rot {
+  color: var(--rot);
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* Outline */
+.mt-button-outline {
+  outline-style: solid;
+  outline-width: 1px;
+}
+
+.mt-button-primary.mt-button-outline {
+  background-color: var(--weis);
+  color: var(--blau);
+  outline: 1px solid var(--blau);
+}
+
+.mt-button-default.mt_dropdown.mt-button-outline:hover {
+  background-color: var(--weis);
+}

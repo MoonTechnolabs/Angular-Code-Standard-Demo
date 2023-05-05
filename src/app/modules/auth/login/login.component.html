@@ -1,0 +1,10 @@
+  <h1 class="text-center container fw-bold"><u>Login Form</u></h1>
+  <div class="container" [formGroup]="loginForm">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" formControlName="uname" name="uname" placeholder="Enter Username" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" formControlName="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit" (click)="doLogin()">Login</button>
+  </div>

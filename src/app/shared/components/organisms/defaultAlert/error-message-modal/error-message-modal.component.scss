@@ -1,0 +1,28 @@
+/* OVERWRITE */
+.modal-header {
+  align-items: normal;
+  justify-content: space-between;
+
+  &::before,
+  &::after {
+    content: none;
+  }
+}
+
+.title {
+  font-size: 24px;
+}
+
+/* OVERWRITE */
+.close {
+  opacity: 1;
+  filter: var(--filter-black);
+}
+
+// .infobox-success {
+//   color: white;
+//   background-color: green;
+//   border-color: green;
+//   -webkit-user-select: text !important;
+//   user-select: text !important;
+// }

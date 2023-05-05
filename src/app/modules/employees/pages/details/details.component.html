@@ -1,0 +1,17 @@
+<h1 class="text-center fw-bold employee-title"><u>Employee details</u></h1>
+<table class="table container table-bordered" *ngIf="getEmployeeDetails$ | async as employeeDetails">
+  <thead>
+    <tr>
+      <th class="text-center">ID</th>
+      <th class="text-center">Firstname</th>
+      <th class="text-center">Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center">{{ employeeDetails.id }}</td>
+      <td class="text-center">{{ employeeDetails.firstName }}</td>
+      <td class="text-center">{{ employeeDetails.age }}</td>
+    </tr>
+  </tbody>
+</table>

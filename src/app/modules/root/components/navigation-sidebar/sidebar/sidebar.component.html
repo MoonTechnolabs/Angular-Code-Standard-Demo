@@ -1,0 +1,13 @@
+<div class="left-btns">
+  <div>
+    <button class="btn btn-outline-info btn-dash border border-dark" [routerLink]="['/dashboard']">Dashboard</button>
+  </div>
+  <div>
+    <button class="btn btn-outline-info btn-emp border border-dark" [routerLink]="['/employees']">Employees</button>
+  </div>
+</div>
+
+<div class="right-btns col-md-2">
+  <button class="btn btn-outline-primary btn-userInfo border border-dark">{{userInfo}}</button>
+  <button class="btn btn-outline-danger btn-logout border border-dark" (click)="logout()">Logout</button>
+</div>
