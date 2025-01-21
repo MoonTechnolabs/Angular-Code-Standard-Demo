@@ -1,4 +1,4 @@
-import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Router, UrlTree } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'src/app/shared/services/localStorage/local-storage.service';
 import { Observable } from 'rxjs';
@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard  {
+export class AuthGuard {
   constructor(
     private locaStorageService: LocalStorageService,
     private router: Router
@@ -35,10 +35,7 @@ export class AuthGuard  {
    * @param state
    * @returns If guards return true, navigation continues otherwise, navigation is cancelled.
    */
-  canActivateChild(
-    childRoute: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
+  canActivateChild():
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
     | boolean

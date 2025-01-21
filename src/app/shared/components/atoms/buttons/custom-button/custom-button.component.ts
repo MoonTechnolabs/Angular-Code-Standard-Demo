@@ -29,6 +29,7 @@ export class CustomButtonComponent {
    */
   @Input()
   set color(color: string) {
+    console.log(color);
     // const style = ButtonService.createStyleFromColor(color);
     // this._color = style.color;
     // this._outline = style.outline;

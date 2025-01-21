@@ -1,16 +1,19 @@
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { LocalStorageService } from 'src/app/shared/services/localStorage/local-storage.service';
 import { Router } from '@angular/router';
 import { withLatestFrom } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
 })
 export class LoginComponent {
   constructor(
@@ -18,9 +21,7 @@ export class LoginComponent {
     private authService: AuthService,
     private localStorageService: LocalStorageService,
     private router: Router
-  ) {
-    void this.router.navigate(['/dashboard']);
-  }
+  ) {}
 
   // Login form
   loginForm = new FormGroup({
