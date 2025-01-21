@@ -1,11 +1,17 @@
 # Angular Coding Standards
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
+This project was initially generated using **Angular CLI version 14.2.7** and later updated to **Angular 18**.
+
+## Development Setup
+
+To get started with this project, follow the instructions below.
 
 ## Install Yarn
+
 1. Run npm install --global yarn
 
-## Install node modules 
+## Install node modules
+
 1. Run yarn
 
 ## Development server
@@ -13,9 +19,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Included Features
-1. Basic folder strcture of angular project 
+
+1. Basic folder strcture of angular project
 2. Login and logout system with JSON file data
-3. List of users 
+3. List of users
 4. User's details page
 
 ## Code scaffolding
