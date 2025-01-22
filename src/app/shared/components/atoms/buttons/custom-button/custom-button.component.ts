@@ -1,18 +1,25 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
   HostBinding,
+  inject,
   Input,
 } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-custom-button',
+  standalone: true,
+  imports: [CommonModule, NgbModule],
   templateUrl: './custom-button.component.html',
   styleUrls: ['./custom-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomButtonComponent {
+  private host = inject(ElementRef);
+
   _color = 'mt-button-default';
   _disabled = false;
   _icon!: string;
@@ -138,8 +145,6 @@ export class CustomButtonComponent {
    * @defaultValue 'button'
    */
   @Input() type = 'button';
-
-  constructor(private host: ElementRef) {}
 
   get element(): HTMLElement {
     return this.host.nativeElement as HTMLElement;

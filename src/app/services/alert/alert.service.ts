@@ -1,12 +1,13 @@
 import { ErrorMessageModalComponent } from 'src/app/shared/components/organisms/defaultAlert/error-message-modal/error-message-modal.component';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { from, Observable, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AlertService {
-  constructor(private modalService: NgbModal) {}
+  private modalService = inject(NgbModal);
 
   /**
    * Opens a default error message modal.
@@ -15,7 +16,7 @@ export class AlertService {
    * @defaultValue `translateService.instant('thatDidNowWork') as string`
    * @returns Promise from `defaultSimpleMessage` modal
    */
-  defaultErrorMessage<T>(text: string, headline?: string): Promise<T> {
+  defaultErrorMessage<T>(text: string, headline?: string): Observable<T> {
     const options = {
       bodyText: text,
       // titleText: headline ? headline : 'A problem occurred ...',
@@ -29,9 +30,8 @@ export class AlertService {
       windowClass: 'mt_modal',
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     modalRef.componentInstance.parent = options;
 
-    return modalRef.result as Promise<T>;
+    return from(modalRef.result as Promise<T>).pipe(take(1));
   }
 }

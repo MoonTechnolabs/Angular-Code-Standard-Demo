@@ -1,18 +1,33 @@
 <button [type]="type" class="{{ klass }} {{ color }}" [disabled]="disabled"
   [ngClass]="{ mt_dropdown: dropdown, 'mt-button-outline': outline }"
   [ngStyle]="{ 'outline-color': outline ? outlineColor : 'none' }">
-  <span *ngIf="_loading">
+  
+  @if (_loading) {  
+  <span>
     <div class="spinner-border spinner-border-sm me-2" role="status"></div>
     <span [translate]="_loadingText"></span>
   </span>
+  }
 
-  <ng-container *ngIf="!_loading">
-    <span *ngIf="icon" [ngStyle]="{
+  @if (!_loading) {  
+  <ng-container>
+
+    @if (icon) {  
+      <span [ngStyle]="{
         'margin-right': text !== undefined ? '4px' : '0px'
       }" class="{{ icon }}" aria-hidden="true"></span>
+    }
+   
+    @if (text) {  
+      <span >{{text}}</span>
+    }
 
-    <span *ngIf="text">{{text}}</span>
     <ng-content></ng-content>
-    <span *ngIf="dropdown" style="margin-left: 4px" class="caret"></span>
+
+    @if (dropdown) {  
+      <span style="margin-left: 4px" class="caret"></span>
+    }
+
   </ng-container>
+}
 </button>

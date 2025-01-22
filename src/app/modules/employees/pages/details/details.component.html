@@ -1,5 +1,6 @@
 <h1 class="text-center fw-bold employee-title"><u>Employee details</u></h1>
-<table class="table container table-bordered" *ngIf="getEmployeeDetails$ | async as employeeDetails">
+@if (getEmployeeDetails$ | async; as employeeDetails) {
+<table class="table container table-bordered">
   <thead>
     <tr>
       <th class="text-center">ID</th>
@@ -15,3 +16,4 @@
     </tr>
   </tbody>
 </table>
+}

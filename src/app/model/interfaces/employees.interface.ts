@@ -2,52 +2,47 @@
  * EmployeeDetails interface model
  */
 // With sorting
-export interface EmployeeDetails {
+export type EmployeeDetails = {
   age: number;
   firstName: string;
   id: number;
-}
+};
 
 /**
  * IUserLoginSuccess interface model
  */
 // With sorting
-export interface IUserLoginSuccess {
+export type IUserLoginSuccess = Pick<EmployeeDetails, 'id' | 'firstName'> & {
   email: string;
-  firstName: string;
   gender: string;
-  id: number;
   lastName: string;
   message: string;
   success: boolean;
   token: string;
   username: string;
-}
+};
 
 /**
  * IDefaultSimpleMessageOptions interface model
  */
-export interface IDefaultSimpleMessageOptions {
+export type IDefaultSimpleMessageOptions = {
   bodyText: string;
   btnText?: string;
   icon?: string;
   titleText: string;
-}
+};
 
 /**
  * DecodedToken interface model
  */
-export interface DecodedToken {
-  email: string;
+export type DecodedToken = Pick<
+  IUserLoginSuccess,
+  'email' | 'firstName' | 'gender' | 'id' | 'lastName' | 'username'
+> & {
   exp: number;
-  firstName: string;
-  gender: string;
   iat: number;
-  id: number;
   image: string;
-  lastName: string;
-  username: string;
-}
+};
 
 export type AUTHORIZATION_SCOPE = DecodedToken;
 
@@ -63,26 +58,25 @@ export enum AuthorizationDetails {
 }
 
 /**
- * IAccountData interface model
+ * IAccountData type model
  */
-export interface IAccountData {
-  email: string;
-  firstName?: string;
-  lastName?: string;
-}
+export type IAccountData = Pick<
+  IUserLoginSuccess,
+  'email' | 'firstName' | 'lastName'
+>;
 
 /**
- * QuotesData interface model
+ * QuotesData type model
  */
-export interface QuotesData {
+export type QuotesData = {
   author: string;
   id: number;
   quote: string;
-}
+};
 
 /**
- * Quotes interface model
+ * Quotes type model
  */
-export interface Quotes {
+export type Quotes = {
   quotes: QuotesData[];
-}
+};

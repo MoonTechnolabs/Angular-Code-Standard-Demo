@@ -1,14 +1,12 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { HomeDataService } from 'src/app/modules/dashboard/services/home-data.service';
 import { map } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-home',
   imports: [
     CommonModule, // Include CommonModule or other necessary modules
-    SharedModule,
   ],
   standalone: true, // Mark as standalone
   templateUrl: './home.component.html',
@@ -17,7 +15,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
   providers: [HomeDataService],
 })
 export class HomeComponent {
-  constructor(private homeDataService: HomeDataService) {}
+  private homeDataService = inject(HomeDataService);
 
   /**
    * Loads all quote list

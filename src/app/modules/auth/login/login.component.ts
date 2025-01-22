@@ -1,10 +1,14 @@
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  FormControl,
+  NonNullableFormBuilder,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { LocalStorageService } from 'src/app/shared/services/localStorage/local-storage.service';
 import { Router } from '@angular/router';
-import { withLatestFrom } from 'rxjs';
+import { tap, withLatestFrom } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -16,15 +20,14 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, ReactiveFormsModule],
 })
 export class LoginComponent {
-  constructor(
-    private alert: AlertService,
-    private authService: AuthService,
-    private localStorageService: LocalStorageService,
-    private router: Router
-  ) {}
+  private alert = inject(AlertService);
+  private authService = inject(AuthService);
+  private localStorageService = inject(LocalStorageService);
+  private router = inject(Router);
+  private fb = inject(NonNullableFormBuilder);
 
   // Login form
-  loginForm = new FormGroup({
+  loginForm = this.fb.group({
     uname: new FormControl('kminchelle', { nonNullable: true }),
     password: new FormControl('0lelplR', { nonNullable: true }),
   });
@@ -40,20 +43,23 @@ export class LoginComponent {
           this.loginForm.get('uname')?.value as string,
           this.loginForm.get('password')?.value as string
         )
-        .pipe(withLatestFrom(this.localStorageService.authorizationScope$))
-        .subscribe(([result]) => {
-          if (result.success) {
-            void this.alert.defaultErrorMessage(result.message);
-            this.authService.setSidebar(true); // if login credentials are true then display sidebar
-            this.router.navigate(['/dashboard']);
-          } else {
-            void this.alert.defaultErrorMessage(
-              result.message,
-              'Problem occrured!!!'
-            );
-            this.authService.setSidebar(false); // if login credentials are false then display sidebar
-          }
-        });
+        .pipe(
+          withLatestFrom(this.localStorageService.authorizationScope$),
+          tap(([result]) => {
+            if (result.success) {
+              void this.alert.defaultErrorMessage(result.message);
+              this.authService.setSidebar(true); // if login credentials are true then display sidebar
+              this.router.navigate(['/dashboard']);
+            } else {
+              void this.alert.defaultErrorMessage(
+                result.message,
+                'Problem occrured!!!'
+              );
+              this.authService.setSidebar(false); // if login credentials are false then display sidebar
+            }
+          })
+        )
+        .subscribe();
     }
   }
 }

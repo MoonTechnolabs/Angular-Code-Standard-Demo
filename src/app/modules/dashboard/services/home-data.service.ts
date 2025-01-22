@@ -7,17 +7,15 @@ import {
   withLatestFrom,
 } from 'rxjs';
 import { DashboardService } from 'src/app/services/dashboard/dashboard.service';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { LocalStorageService } from 'src/app/shared/services/localStorage/local-storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HomeDataService {
-  constructor(
-    private dashboardService: DashboardService,
-    private localStorageService: LocalStorageService
-  ) {}
+  private dashboardService = inject(DashboardService);
+  private localStorageService = inject(LocalStorageService);
 
   /**
    * Loads all quotes based on subject

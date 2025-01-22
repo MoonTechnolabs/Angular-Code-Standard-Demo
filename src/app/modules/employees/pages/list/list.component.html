@@ -1,5 +1,6 @@
 <h1 class="text-center fw-bold employees-title"><u>Employees listing</u></h1>
-<table class="table container table-bordered" *ngIf="getEmployeeList$ | async as employeeList">
+@if (getEmployeeList$ | async; as employeeList) { 
+<table class="table container table-bordered">
   <thead>
     <tr>
       <th class="text-center col-md-1">ID</th>
@@ -9,13 +10,16 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let employee of employeeList">
-      <td class="text-center">{{ employee.id }}</td>
-      <td class="text-center">{{ employee.firstName }}</td>
-      <td class="text-center">{{ employee.age }}</td>
-      <td class="text-center">
-        <button class="btn btn-info" [routerLink]="['/employees/details/', employee.id]">Details</button>
-      </td>
-    </tr>
+    @for (employee of employeeList; track employee.id) {  
+      <tr>
+        <td class="text-center">{{ employee.id }}</td>
+        <td class="text-center">{{ employee.firstName }}</td>
+        <td class="text-center">{{ employee.age }}</td>
+        <td class="text-center">
+          <button class="btn btn-info" [routerLink]="['/employees/details/', employee.id]">Details</button>
+        </td>
+      </tr>
+    }
   </tbody>
 </table>
+}

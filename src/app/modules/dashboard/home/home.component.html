@@ -1,17 +1,21 @@
 <h1 class="text-center fw-bold dashboard-title"><u>Quotes and authors listing</u></h1>
-<table class="table container table-bordered" *ngIf="loadData$ | async as quotesData">
-  <thead>
-    <tr>
-      <th class="col text-center col-md-1">ID</th>
-      <th class="col text-center">Quote</th>
-      <th class="col text-center">Author</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let quote of quotesData.notifications">
-      <td class="text-center">{{ quote.id }}</td>
-      <td>{{ quote.quote }}</td>
-      <td class="text-center">{{ quote.author }}</td>
-    </tr>
-  </tbody>
-</table>
+@if(loadData$ | async; as quotesData){
+  <table class="table container table-bordered" >
+    <thead>
+      <tr>
+        <th class="col text-center col-md-1">ID</th>
+        <th class="col text-center">Quote</th>
+        <th class="col text-center">Author</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (quote of quotesData.notifications; track quote.id) {  
+        <tr >
+          <td class="text-center">{{ quote.id }}</td>
+          <td>{{ quote.quote }}</td>
+          <td class="text-center">{{ quote.author }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

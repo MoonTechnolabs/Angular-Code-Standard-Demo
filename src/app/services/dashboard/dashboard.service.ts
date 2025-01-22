@@ -7,8 +7,6 @@ import { QuotesData } from 'src/app/model/interfaces/employees.interface';
   providedIn: 'root',
 })
 export class DashboardService {
-  constructor() {}
-
   /**
    * Get list of quotes
    * @returns Observable with list of quotes

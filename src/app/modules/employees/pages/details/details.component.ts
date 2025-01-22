@@ -1,5 +1,5 @@
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { map, shareReplay, switchMap } from 'rxjs';
 
 // Services
@@ -8,18 +8,16 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-details',
+  standalone: true, // Mark as standalone
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css'],
-  standalone: true, // Mark as standalone
   imports: [
     CommonModule, // Include CommonModule or other necessary modules
   ],
 })
 export class DetailsComponent {
-  constructor(
-    private employeesService: EmployeeService,
-    private route: ActivatedRoute
-  ) {}
+  private employeesService = inject(EmployeeService);
+  private route = inject(ActivatedRoute);
 
   // Save the employee id from the router param
   // and cache it via shareReplay

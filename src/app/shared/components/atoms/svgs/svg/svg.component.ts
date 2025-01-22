@@ -1,17 +1,24 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  inject,
   Input,
 } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-svg',
+  standalone: true,
+  imports: [CommonModule, NgbModule],
   templateUrl: './svg.component.html',
   styleUrls: ['./svg.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SvgComponent {
+  private host = inject(ElementRef);
+
   /**
    * CSS Class
    */
@@ -47,8 +54,6 @@ export class SvgComponent {
    * Source of SVG file.
    */
   @Input() src!: string;
-
-  constructor(private host: ElementRef) {}
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   get element(): any {

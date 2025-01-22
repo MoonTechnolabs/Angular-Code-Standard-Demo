@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EmployeeService } from 'src/app/services/employee/employee.service';
 
@@ -14,7 +14,7 @@ import { EmployeeService } from 'src/app/services/employee/employee.service';
   ],
 })
 export class ListComponent {
-  constructor(private employeesService: EmployeeService) {}
+  private employeesService = inject(EmployeeService);
 
   // Get employee list by fake API
   getEmployeeList$ = this.employeesService.getEmployees();

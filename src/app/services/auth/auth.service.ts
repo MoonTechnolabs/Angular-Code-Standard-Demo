@@ -2,8 +2,8 @@ import {
   AuthorizationDetails,
   IUserLoginSuccess,
 } from 'src/app/model/interfaces/employees.interface';
-import { BehaviorSubject, Observable, of, tap } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { Observable, of, tap } from 'rxjs';
+import { inject, Injectable, signal } from '@angular/core';
 import { LocalStorageService } from 'src/app/shared/services/localStorage/local-storage.service';
 import { userAuthData } from 'src/app/model/const/api';
 
@@ -11,10 +11,11 @@ import { userAuthData } from 'src/app/model/const/api';
   providedIn: 'root',
 })
 export class AuthService {
-  userAuthData = userAuthData;
-  constructor(private localStorageService: LocalStorageService) {}
+  private localStorageService = inject(LocalStorageService);
 
-  sidebarBehaviorSubject$ = new BehaviorSubject<boolean>(false);
+  userAuthData = userAuthData;
+
+  sidebarBehaviorSubject = signal<boolean>(false);
 
   /**
    * Login to the application
@@ -58,6 +59,6 @@ export class AuthService {
    * @param isShowSidebar - passing boolean value
    */
   setSidebar(isShowSidebar: boolean): void {
-    this.sidebarBehaviorSubject$.next(isShowSidebar);
+    this.sidebarBehaviorSubject.set(isShowSidebar);
   }
 }

@@ -1,5 +1,5 @@
 import { Router, UrlTree } from '@angular/router';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { LocalStorageService } from 'src/app/shared/services/localStorage/local-storage.service';
 import { Observable } from 'rxjs';
 
@@ -7,10 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthGuard {
-  constructor(
-    private locaStorageService: LocalStorageService,
-    private router: Router
-  ) {}
+  private locaStorageService = inject(LocalStorageService);
+  private router = inject(Router);
 
   /**
    * User authentication
